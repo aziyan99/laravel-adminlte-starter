@@ -38,21 +38,4 @@ class SettingController extends Controller
         ]);
         return redirect()->back()->with('success', 'Logo berhasil diperbarui');
     }
-
-    public function updateFrontImage(Request $request, Setting $setting)
-    {
-        $request->validate([
-            'front_image' => 'required|image'
-        ]);
-
-        if (Storage::disk('public')->exists($setting->front_image)) {
-            Storage::disk('public')->delete($setting->front_image);
-        }
-
-        $front_image = $request->file('front_image')->store('front_image', 'public');
-        $setting->update([
-            'front_image' => $front_image
-        ]);
-        return redirect()->back()->with('success', 'Gambar berhasil diperbarui');
-    }
 }

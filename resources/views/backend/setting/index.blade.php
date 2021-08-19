@@ -64,43 +64,6 @@
                 </a>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">
-                    {{ __('Ubah gambar depan') }}
-                </h3>
-            </div>
-            <div class="card-body">
-                <form action="{{ route('backend.setting.update.front.image', $setting) }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-group">
-                        <label>{{ __('Gambar baru') }}</label>
-                        <input type="file" name="front_image" class="form-control @error('front_image') is-invalid @enderror">
-                        @error('front_image')
-                        <small class="invalid-feedback">
-                            {{ $message }}
-                        </small>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        @can('ubah pengaturan')
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-image mr-2"></i>
-                            {{ __('Ubah gambar') }}
-                        </button>
-                        @endcan
-                    </div>
-                </form>
-                <hr>
-                <h5>{{ __('Gambar sebelumnya') }}</h5>
-                <a href="{{ asset('storage') . "/" . $setting->front_image }}" target="_blank">
-                    <img src="{{ asset('storage') . "/" . $setting->front_image }}" alt="front_image" class="img-thumbnail"
-                        width="250">
-                </a>
-            </div>
-        </div>
     </div>
     <div class="col-md-8">
         <div class="card">
@@ -114,11 +77,11 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label>{{ __('Nama sekolah') }}</label>
-                        <input type="text" name="school_name"
-                            class="form-control @error('school_name') is-invalid @enderror"
-                            value="{{ old('school_name', $setting->school_name) }}">
-                        @error('school_name')
+                        <label>{{ __('Nama') }}</label>
+                        <input type="text" name="name"
+                            class="form-control @error('name') is-invalid @enderror"
+                            value="{{ old('name', $setting->name) }}">
+                        @error('name')
                         <small class="invalid-feedback" role="alert">{{ $message }}</small>
                         @enderror
                     </div>
@@ -148,30 +111,7 @@
                         @enderror
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{{ __('Visi') }}</label>
-                                <textarea name="visi" cols="30" rows="3"
-                                    class="form-control @error('visi') is-invalid @enderror">{{ old('address', $setting->visi) }}</textarea>
-                                @error('visi')
-                                <small class="invalid-feedback" role="alert">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{{ __('Misi') }}</label>
-                                <textarea name="misi" cols="30" rows="3"
-                                    class="form-control @error('misi') is-invalid @enderror">{{ old('address', $setting->misi) }}</textarea>
-                                @error('misi')
-                                <small class="invalid-feedback" role="alert">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-3">
-
                             <div class="form-group">
                                 <label>{{ __('Facebook') }}</label>
                                 <input type="text" name="facebook"

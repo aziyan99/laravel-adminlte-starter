@@ -13,13 +13,13 @@ class SideMenuLogo extends Component
      * @return void
      */
 
-    public $school_name;
+    public $name;
     public $logo;
 
     public function __construct()
     {
         $setting = Setting::first();
-        $this->school_name = $setting->school_name;
+        $this->name = $setting->name;
         $this->logo = $setting->logo;
     }
 

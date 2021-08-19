@@ -1,13 +1,7 @@
 <?php
 
-use App\Http\Controllers\Backend\AnnouncementController;
-use App\Http\Controllers\Backend\AnnouncementCategoryController;
-use App\Http\Controllers\Backend\ArticleCategoryController;
-use App\Http\Controllers\Backend\ArticleController;
 use App\Http\Controllers\Backend\AssignPermissionController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\GalleryController;
-use App\Http\Controllers\Backend\GalleryDetailController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\RoleController;
@@ -87,54 +81,5 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.', 'middleware' => 'auth']
         Route::put('/updateinformation/{setting}/', [SettingController::class, 'updateInformation'])->name('setting.update.information')->middleware('permission:ubah pengaturan');
         Route::put('/updatelogo/{setting}/', [SettingController::class, 'updateLogo'])->name('setting.update.logo')->middleware('permission:ubah pengaturan');
         Route::put('/updatefrontimage/{setting}/', [SettingController::class, 'updateFrontImage'])->name('setting.update.front.image')->middleware('permission:ubah pengaturan');
-    });
-
-    Route::group(['prefix' => 'announcementcategories'], function () {
-        Route::get('/', [AnnouncementCategoryController::class, 'index'])->name('announcement.category.index')->middleware('permission:lihat kategori pengumuman');
-        Route::get('/{announcementCategory}/edit', [AnnouncementCategoryController::class, 'edit'])->name('announcement.category.edit')->middleware('permission:ubah kategori pengumuman');
-        Route::post('/store', [AnnouncementCategoryController::class, 'store'])->name('announcement.category.store')->middleware('permission:tambah kategori pengumuman');
-        Route::put('/update/{announcementCategory}', [AnnouncementCategoryController::class, 'update'])->name('announcement.category.update')->middleware('permission:ubah kategori pengumuman');
-        Route::delete('/delete/{announcementCategory}', [AnnouncementCategoryController::class, 'destroy'])->name('announcement.category.destroy')->middleware('permission:hapus kategori pengumuman');
-    });
-
-    Route::group(['prefix' => 'announcements'], function () {
-        Route::get('/', [AnnouncementController::class, 'index'])->name('announcements.index')->middleware('permission:lihat pengumuman');
-        Route::get('/create', [AnnouncementController::class, 'create'])->name('announcements.create')->middleware('permission:tambah pengumuman');
-        Route::post('/', [AnnouncementController::class, 'store'])->name('announcements.store')->middleware('permission:tambah pengumuman');
-        Route::get('/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('announcements.edit')->middleware('permission:ubah pengumuman');
-        Route::put('/{announcement}', [AnnouncementController::class, 'update'])->name('announcements.update')->middleware('permission:ubah pengumuman');
-        Route::delete('/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcements.destroy')->middleware('permission:hapus pengumuman');
-        Route::get('/{announcement}', [AnnouncementController::class, 'show'])->name('announcements.show')->middleware('permission:lihat pengumuman');
-    });
-
-    Route::group(['prefix' => 'articlecategories'], function () {
-        Route::get('/', [ArticleCategoryController::class, 'index'])->name('article.category.index')->middleware('permission:lihat kategori artikel');
-        Route::get('/{articleCategory}/edit', [ArticleCategoryController::class, 'edit'])->name('article.category.edit')->middleware('permission:ubah kategori artikel');
-        Route::post('/store', [ArticleCategoryController::class, 'store'])->name('article.category.store')->middleware('permission:tambah kategori artikel');
-        Route::put('/update/{articleCategory}', [ArticleCategoryController::class, 'update'])->name('article.category.update')->middleware('permission:ubah kategori artikel');
-        Route::delete('/delete/{articleCategory}', [ArticleCategoryController::class, 'destroy'])->name('article.category.destroy')->middleware('permission:hapus kategori artikel');
-    });
-
-    Route::group(['prefix' => 'articles'], function () {
-        Route::get('/', [ArticleController::class, 'index'])->name('articles.index')->middleware('permission:lihat artikel');
-        Route::get('/create', [ArticleController::class, 'create'])->name('articles.create')->middleware('permission:tambah artikel');
-        Route::post('/', [ArticleController::class, 'store'])->name('articles.store')->middleware('permission:tambah artikel');
-        Route::get('/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit')->middleware('permission:ubah artikel');
-        Route::put('/{article}', [ArticleController::class, 'update'])->name('articles.update')->middleware('permission:ubah artikel');
-        Route::delete('/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy')->middleware('permission:hapus artikel');
-        Route::get('/{article}', [ArticleController::class, 'show'])->name('articles.show')->middleware('permission:lihat artikel');
-    });
-
-    Route::group(['prefix' => 'galleries'], function () {
-        Route::get('/', [GalleryController::class, 'index'])->name('galleries.index')->middleware('permission:lihat galeri');
-        Route::get('/create', [GalleryController::class, 'create'])->name('galleries.create')->middleware('permission:tambah galeri');
-        Route::post('/', [GalleryController::class, 'store'])->name('galleries.store')->middleware('permission:tambah galeri');
-        Route::get('/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit')->middleware('permission:ubah galeri');
-        Route::put('/{gallery}', [GalleryController::class, 'update'])->name('galleries.update')->middleware('permission:ubah galeri');
-        Route::delete('/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy')->middleware('permission:hapus galeri');
-        Route::get('/{gallery}', [GalleryController::class, 'show'])->name('galleries.show')->middleware('permission:lihat galeri');
-
-        Route::post('/{gallery}/details/', [GalleryDetailController::class, 'store'])->name('galleries.details.store')->middleware('permission:ubah galeri');
-        Route::delete('/{galleryDetail}/details', [GalleryDetailController::class, 'destroy'])->name('galleries.details.destroy')->middleware('permission:ubah galeri');
     });
 });

@@ -14,9 +14,6 @@ class AddColumnToSettingsTable extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->string('visi');
-            $table->string('misi');
-            $table->string('front_image');
             $table->string('facebook');
             $table->string('instagram');
             $table->string('youtube');
@@ -32,9 +29,6 @@ class AddColumnToSettingsTable extends Migration
     public function down()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->dropColumn('visi');
-            $table->dropColumn('misi');
-            $table->dropColumn('front_image');
             $table->dropColumn('facebook');
             $table->dropColumn('instagram');
             $table->dropColumn('youtube');

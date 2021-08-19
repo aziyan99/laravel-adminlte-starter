@@ -24,7 +24,7 @@ class UpdateSettingRequest extends FormRequest
     public function rules()
     {
         return [
-            'school_name' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'phone_number' => 'required',
             'address' => 'required'
