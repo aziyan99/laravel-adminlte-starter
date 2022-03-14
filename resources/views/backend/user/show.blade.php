@@ -56,10 +56,6 @@
                                 <td>{{ $user->name }}</td>
                             </tr>
                             <tr>
-                                <th>{{ __('NIK') }}</th>
-                                <td>{{ $user->nik }}</td>
-                            </tr>
-                            <tr>
                                 <th>{{ __('Role') }}</th>
                                 <td>
                                     @foreach ($user->roles as $user_role)

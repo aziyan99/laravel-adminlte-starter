@@ -26,7 +26,6 @@ class UpdateProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|unique:users,email,' . $this->id,
-            'nik' => 'required',
             'gender' => 'required',
             'birth_place' => 'required',
             'birth_date' => 'required',

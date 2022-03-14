@@ -14,7 +14,6 @@ class AddColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('nik')->nullable();
             $table->enum('gender', ['male', 'female']);
             $table->string('birth_place')->nullable();
             $table->string('birth_date')->nullable();
