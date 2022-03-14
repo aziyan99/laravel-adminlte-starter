@@ -61,9 +61,6 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                        <b>{{ __('Artikel') }}</b> <a class="float-right">1,322</a>
-                    </li>
-                    <li class="list-group-item">
                         <b>{{ __('No.Hp') }}</b> <a class="float-right">{{ $profile->phone_number }}</a>
                     </li>
                 </ul>
@@ -72,19 +69,12 @@
                     {{ __('Ubah gambar profil') }}
                 </button>
             </div>
-            <!-- /.card-body -->
         </div>
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">{{ __('Tentang saya') }}</h3>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
-                <strong><i class="fas fa-user mr-1"></i> {{ __('Nik') }}</strong>
-                <p class="text-muted">
-                    {{ $profile->nik }}
-                </p>
-                <hr>
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> {{ __('Alamat') }}</strong>
                 <p class="text-muted">{{ $profile->address }}</p>
                 <hr>
@@ -119,14 +109,6 @@
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             name="name" value="{{ old('name', $profile->name) }}">
                                         @error('name')
-                                        <small class="invalid-feedback">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{{ __('Nomor Induk Kepegawaian') }}</label>
-                                        <input type="text" class="form-control @error('nik') is-invalid @enderror"
-                                            name="nik" value="{{ old('nik', $profile->nik) }}">
-                                        @error('nik')
                                         <small class="invalid-feedback">{{ $message }}</small>
                                         @enderror
                                     </div>

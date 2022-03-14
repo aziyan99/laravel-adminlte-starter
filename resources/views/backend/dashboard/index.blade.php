@@ -31,50 +31,5 @@
             @endcan
         </div>
     </div>
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>{{ $article_count}}</h3>
-                <p>{{ __('Artikel') }}</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-document-text"></i>
-            </div>
-            @can('lihat artikel')
-            <a href="{{ route('backend.articles.index') }}" class="small-box-footer">{{ __('Detail') }} <i class="fas fa-arrow-circle-right"></i></a>
-            @endcan
-        </div>
-    </div>
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>{{ $gallery_count }}</h3>
-                <p>{{ __('Galeri') }}</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-images"></i>
-            </div>
-            @can('lihat galeri')
-            <a href="{{ route('backend.galleries.index') }}" class="small-box-footer">{{ __('Detail') }} <i class="fas fa-arrow-circle-right"></i></a>
-            @endcan
-        </div>
-    </div>
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>{{ $announcement_count }}</h3>
-                <p>{{ __('Pengumuman') }}</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-speakerphone"></i>
-            </div>
-            @can('lihat pengumuman')
-            <a href="{{ route('backend.announcements.index') }}" class="small-box-footer">{{ __('Detail') }} <i class="fas fa-arrow-circle-right"></i></a>
-            @endcan
-        </div>
-    </div>
 </div>
 @endsection
