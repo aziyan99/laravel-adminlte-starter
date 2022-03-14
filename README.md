@@ -16,5 +16,5 @@
     - Password: `password`
 
 
-## Producion
+## Production
 For production configuraion please referer to [https://laravel.com/docs/8.x/configuration](https://laravel.com/docs/8.x/configuration)
