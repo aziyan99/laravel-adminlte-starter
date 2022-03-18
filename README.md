@@ -176,7 +176,7 @@ Project Link: [https://github.com/aziyan99/laravel-adminlte-starter](https://git
 [issues-shield]: https://img.shields.io/github/issues/aziyan99/laravel-adminlte-starter.svg?style=for-the-badge
 [issues-url]: https://github.com/aziyan99/laravel-adminlte-starter/issues
 [license-shield]: https://img.shields.io/github/license/aziyan99/laravel-adminlte-starter.svg?style=for-the-badge
-[license-url]: https://github.com/aziyan99/laravel-adminlte-starter/blob/master/LICENSE.txt
+[license-url]: https://github.com/aziyan99/laravel-adminlte-starter/blob/main/LICENCE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/raja-azian
 [product-screenshot]: https://i.ibb.co/q7KVQgT/screencapture-laravel-adminlte-starter-test-backend-settings-index-2022-03-18-12-45-47.png
