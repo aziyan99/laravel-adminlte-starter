@@ -44,10 +44,9 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#Authentication">Authentication</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -103,6 +102,13 @@ This is an example of how to list things you need to use the software and how to
 4. `php artisan migrate:fresh`
 5. `php artisan db:seed`
 6. `php artisan serve` or just using laravel-valet
+
+### Authentication
+- URL `http://localhost:8000/login` or configurated URL.
+- Admin:
+    - Email: `superadmin@example.com` 
+    - Password: `password`
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -174,32 +180,3 @@ Project Link: [https://github.com/aziyan99/laravel-adminlte-starter](https://git
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/raja-azian
 [product-screenshot]: https://i.ibb.co/q7KVQgT/screencapture-laravel-adminlte-starter-test-backend-settings-index-2022-03-18-12-45-47.png
-
-
-
-
-
-
-
-
-
-## Installation
-1. `composer install`
-2. `npm install`
-3. `npm run dev`
-4. `php artisan key:generate`
-5. `php artisan storage:link`
-6. Sesuaikan konfigurasi koneksi database di file `.env`
-7. `php artisan migrate:fresh`
-8. `php artisan db:seed`
-9. `php artisan serve`
-
-### Default login
-- URL `http://localhost:8000/login`
-- Admin:
-    - Email: `superadmin@example.com` 
-    - Password: `password`
-
-
-## Production
-For production configuraion please referer to [https://laravel.com/docs/8.x/configuration](https://laravel.com/docs/8.x/configuration)
