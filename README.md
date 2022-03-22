@@ -112,6 +112,9 @@ This is an example of how to list things you need to use the software and how to
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Debug
+1. Different PHP version. If failed to running (serve) the project try running `composer update` before running `php artisan serve`.
+2. Branch `php74` contain composer config that running on php7.4.x
 
 ## Contributing
 
