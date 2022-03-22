@@ -45,7 +45,6 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //image
         $avatar = new Avatar();
         $image = time() . ".png";
         $avatar->create($request->name)->save(storage_path('app/public/profile_images/' . $image));
