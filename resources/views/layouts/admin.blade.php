@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') - {{ config('app.name') }}</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="{{ asset('adminlte3/plugins/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminlte3/dist/css/adminlte.min.css') }}">
     @vite(['resources/css/app.css'])
+    <link rel="stylesheet" href="{{ asset('adminlte3/plugins/toastr/toastr.min.css') }}">
     @stack('styles')
 </head>
 
@@ -76,13 +76,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.roles.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-shield-alt"></i>
                                 <p>{{ __('Roles') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.permissions.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-user-shield"></i>
                                 <p>{{ __('Permissions') }}</p>
                             </a>
@@ -127,12 +127,15 @@
             <span>{{ __('All rights reserved.') }}</span>
         </footer>
     </div>
-    <script src="{{ asset('adminlte3/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('adminlte3/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('adminlte3/dist/js/adminlte.min.js') }}"></script>
-    @vite(['resources/js/app.js'])
 
+    <script>
+        window.jQuery = null;
+        window.$ = null;
+    </script>
+
+    @vite(['resources/js/app.js'])
     @stack('scripts')
+
 </body>
 
 </html>

@@ -23,7 +23,7 @@ class AuthGatesMiddleware
 
         foreach ($roles as $role) {
             foreach ($role->permissions as $permission) {
-                $permission[$permission->name][] = $role->id;
+                $permissions[$permission->name][] = $role->id;
             }
         }
 

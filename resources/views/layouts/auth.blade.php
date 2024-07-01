@@ -7,9 +7,7 @@
     <title>@yield('title') - {{ config('app.name') }}</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="{{ asset('adminlte3/plugins/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminlte3/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminlte3/dist/css/adminlte.min.css') }}">
+    @vite(['resources/css/app.css'])
 </head>
 
 <body class="hold-transition login-page">
@@ -24,9 +22,7 @@
         </div>
     </div>
 
-    <script src="{{ asset('adminlte3/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('adminlte3/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('adminlte3/dist/js/adminlte.min.js') }}"></script>
+    @vite(['resources/js/app.js'])
 </body>
 
 </html>
