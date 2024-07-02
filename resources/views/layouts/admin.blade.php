@@ -9,7 +9,6 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     @vite(['resources/css/app.css'])
-    <link rel="stylesheet" href="{{ asset('adminlte3/plugins/toastr/toastr.min.css') }}">
     @stack('styles')
 </head>
 
@@ -88,7 +87,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>{{ __('Users') }}</p>
                             </a>

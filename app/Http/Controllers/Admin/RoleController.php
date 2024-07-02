@@ -68,7 +68,7 @@ class RoleController extends Controller
             $role = Role::create($request->only('name'));
 
             if ($request->has('permissions')) {
-                $role->permissions()->sync($request->get('permissions'));
+                $role->permissions()->sync($request->post('permissions'));
             }
         });
 
@@ -90,7 +90,7 @@ class RoleController extends Controller
             $role->update($request->only('name'));
 
             if ($request->has('permissions')) {
-                $role->permissions()->sync($request->get('permissions'));
+                $role->permissions()->sync($request->post('permissions'));
             }
         });
 
