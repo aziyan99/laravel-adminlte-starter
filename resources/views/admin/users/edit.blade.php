@@ -16,7 +16,9 @@
 
                         @include('admin.users._form')
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary mr-2">{{ __('Update') }}</button>
+                            @permission('users.update')
+                                <button type="submit" class="btn btn-primary mr-2">{{ __('Update') }}</button>
+                            @endpermission
                             <a href="{{ route('admin.users.index') }}" class="btn btn-default"
                                 role="button">{{ __('Cancel') }}</a>
                         </div>

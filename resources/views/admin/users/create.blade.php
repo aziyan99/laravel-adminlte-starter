@@ -36,7 +36,9 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary mr-2">{{ __('Save') }}</button>
+                            @permission('users.create')
+                                <button type="submit" class="btn btn-primary mr-2">{{ __('Save') }}</button>
+                            @endpermission
                             <a href="{{ route('admin.users.index') }}" class="btn btn-default"
                                 role="button">{{ __('Cancel') }}</a>
                         </div>

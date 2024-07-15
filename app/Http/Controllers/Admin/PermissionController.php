@@ -16,8 +16,10 @@ use Yajra\DataTables\DataTables;
 
 class PermissionController extends Controller
 {
-   public function index(Request $request): View | JsonResponse
+    public function index(Request $request): View | JsonResponse
     {
+        validate_permission('permissions.read');
+
         if ($request->ajax()) {
             $rows = Permission::offset($request->start)->limit($request->length);
             $totalRecords = Permission::count();
@@ -28,8 +30,16 @@ class PermissionController extends Controller
                 ->addColumn('actions', function ($row) {
                     return Blade::render('
                         <div class="btn-group">
-                            <a href="{{ route(\'admin.permissions.edit\', $row) }}" class="btn btn-default">Update</a>
-                            <button type="button" class="btn btn-danger delete-btn" data-destroy="{{ route(\'admin.permissions.destroy\', $row) }}">Delete</button>
+                            @permission(\'permissions.update\')
+                                @onlydev
+                                    <a href="{{ route(\'admin.permissions.edit\', $row) }}" class="btn btn-default">Update</a>
+                                @endonlydev
+                            @endpermission
+                            @permission(\'permissions.delete\')
+                                @onlydev
+                                    <button type="button" class="btn btn-danger delete-btn" data-destroy="{{ route(\'admin.permissions.destroy\', $row) }}">Delete</button>
+                                @endonlydev
+                            @endpermission
                         </div>
                     ', ['row' => $row->id]);
                 })
@@ -55,12 +65,18 @@ class PermissionController extends Controller
 
     public function create(): View
     {
+        validate_permission('permissions.create');
+        allow_only_dev_env();
+
         $permission = new Permission();
         return view('admin.permissions.create', compact('permission'));
     }
 
     public function store(StorePermissionRequest $request): RedirectResponse
     {
+        validate_permission('permissions.create');
+        allow_only_dev_env();
+
         Permission::create($request->only('name'));
 
         return redirect()
@@ -70,11 +86,17 @@ class PermissionController extends Controller
 
     public function edit(Permission $permission): View
     {
+        validate_permission('permissions.update');
+        allow_only_dev_env();
+
         return view('admin.permissions.edit', compact('permission'));
     }
 
     public function update(UpdatePermissionRequest $request, Permission $permission): RedirectResponse
     {
+        validate_permission('permissions.update');
+        allow_only_dev_env();
+
         $permission->update($request->only('name'));
 
         return redirect()
@@ -84,6 +106,9 @@ class PermissionController extends Controller
 
     public function destroy(Permission $permission): RedirectResponse
     {
+        validate_permission('permissions.delete');
+        allow_only_dev_env();
+
         $permission->delete();
         return redirect()
             ->route('admin.permissions.index')

@@ -1,6 +1,6 @@
-@if (session()->has('success'))
+@session('success')
     <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        {{ session()->get('success') }}
+        {{ $value }}
     </div>
-@endif
+@endsession

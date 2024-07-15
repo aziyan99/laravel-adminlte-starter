@@ -21,6 +21,8 @@ class UserController extends Controller
 {
     public function index(Request $request): View | JsonResponse
     {
+        validate_permission('users.read');
+
         if ($request->ajax()) {
             $rows = User::offset($request->start)->limit($request->length);
             $totalRecords = User::count();
@@ -31,8 +33,12 @@ class UserController extends Controller
                 ->addColumn('actions', function ($row) {
                     return Blade::render('
                         <div class="btn-group">
-                            <a href="{{ route(\'admin.users.edit\', $row) }}" class="btn btn-default">Update</a>
-                            <button type="button" class="btn btn-danger delete-btn" data-destroy="{{ route(\'admin.users.destroy\', $row) }}">Delete</button>
+                            @permission(\'users.create\')
+                                <a href="{{ route(\'admin.users.edit\', $row) }}" class="btn btn-default">Update</a>
+                            @endpermission
+                            @permission(\'users.delete\')
+                                <button type="button" class="btn btn-danger delete-btn" data-destroy="{{ route(\'admin.users.destroy\', $row) }}">Delete</button>
+                            @endpermission
                         </div>
                     ', ['row' => $row]);
                 })
@@ -60,6 +66,8 @@ class UserController extends Controller
 
     public function create(): View
     {
+        validate_permission('users.create');
+
         $user = new User();
         $roles = Role::all();
         $userRoles = [];
@@ -68,6 +76,8 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request): RedirectResponse
     {
+        validate_permission('users.create');
+
         DB::transaction(function () use ($request) {
             $user = User::create($request->only('name', 'email') + ['password' => Hash::make($request->password)]);
 
@@ -83,11 +93,15 @@ class UserController extends Controller
 
     public function show(User $user): View
     {
+        validate_permission('users.read');
+
         return view('admin.users.show', compact('user'));
     }
 
     public function edit(User $user): View
     {
+        validate_permission('users.update');
+
         $roles = Role::all();
         $userRoles = $user->roles->pluck('id')->toArray();
         return view('admin.users.edit', compact('user', 'roles', 'userRoles'));
@@ -95,6 +109,8 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
+        validate_permission('users.update');
+
         DB::transaction(function () use ($request, $user) {
             $user->update($request->only('name', 'email'));
 
@@ -110,6 +126,8 @@ class UserController extends Controller
 
     public function destroy(User $user): RedirectResponse
     {
+        validate_permission('users.delete');
+
         $user->delete();
         return redirect()
             ->route('admin.users.index')

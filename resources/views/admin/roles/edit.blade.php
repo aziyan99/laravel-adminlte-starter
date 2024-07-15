@@ -21,7 +21,9 @@
                             <select name="permissions[]" id="permissions"
                                 class="form-control @error('permissions') is-invalid @enderror" multiple>
                                 @foreach ($permissions as $permission)
-                                    <option value="{{ $permission->id }}" {{ in_array($permission->id, $rolePermissions) ? 'selected' : ''}}>{{ $permission->name }}</option>
+                                    <option value="{{ $permission->id }}"
+                                        {{ in_array($permission->id, $rolePermissions) ? 'selected' : '' }}>
+                                        {{ $permission->name }}</option>
                                 @endforeach
                             </select>
                             @error('permissions')
@@ -30,7 +32,9 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary mr-2">{{ __('Update') }}</button>
+                            @permission('roles.update')
+                                <button type="submit" class="btn btn-primary mr-2">{{ __('Update') }}</button>
+                            @endpermission
                             <a href="{{ route('admin.roles.index') }}" class="btn btn-default"
                                 role="button">{{ __('Cancel') }}</a>
                         </div>

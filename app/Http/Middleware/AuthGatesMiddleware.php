@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 class AuthGatesMiddleware
 {
     /**
-     * Handle an incoming request.
-     *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
@@ -27,7 +25,6 @@ class AuthGatesMiddleware
             }
         }
 
-        // define dynamic gate
         foreach ($permissions as $name => $roles) {
             Gate::define($name, function (User $user) use ($roles) {
                 return count(array_intersect($user->roles->pluck('id')->toArray(), $roles)) > 0;

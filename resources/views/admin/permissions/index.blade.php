@@ -6,10 +6,14 @@
     <div class="row">
         <div class="col-6"></div>
         <div class="col-6">
-            <a href="{{ route('admin.permissions.create') }}" class="mt-3 btn btn-primary float-right">
-                <i class="fas fa-plus mr-1"></i>
-                {{ __('New Permissions') }}
-            </a>
+            @permission('permissions.create')
+                @onlydev
+                    <a href="{{ route('admin.permissions.create') }}" class="mt-3 btn btn-primary float-right">
+                        <i class="fas fa-plus mr-1"></i>
+                        {{ __('New Permissions') }}
+                    </a>
+                @endonlydev
+            @endpermission
         </div>
     </div>
     <div class="row">
@@ -50,4 +54,3 @@
         </div>
     </div>
 @endsection
-

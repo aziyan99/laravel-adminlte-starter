@@ -55,7 +55,7 @@ class DataTablesColumnsBuilder
     public function removeColumns(array $columns): DataTablesColumnsBuilder
     {
         $results = [];
-        foreach($this->results as $key => $value){
+        foreach ($this->results as $key => $value) {
             if (!in_array($key, $columns)) {
                 $results[$key] = $value;
             }
@@ -81,8 +81,7 @@ class DataTablesColumnsBuilder
         $tableColumns = array_filter($tableColumns, fn ($value) => !in_array($value, $this->excludedColumns));
         $tableColumns = array_values($tableColumns);
 
-
-        for($i=0; $i < count($tableColumns); $i++) {
+        for ($i = 0; $i < count($tableColumns); $i++) {
             $this->results[$tableColumns[$i]] = [
                 'name' => ucfirst($tableColumns[$i]),
                 'data' => $tableColumns[$i],

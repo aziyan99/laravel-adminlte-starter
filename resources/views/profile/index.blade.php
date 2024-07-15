@@ -19,7 +19,9 @@
                             <b>Registered at</b> <a class="float-right">{{ $user->created_at->format('M d, Y') }}</a>
                         </li>
                     </ul>
-                    <a href="{{ route('profile.edit') }}" class="btn btn-primary btn-block"><b>Edit</b></a>
+                    @permission('profile.update')
+                        <a href="{{ route('profile.edit') }}" class="btn btn-primary btn-block"><b>Edit</b></a>
+                    @endpermission
                 </div>
             </div>
         </div>

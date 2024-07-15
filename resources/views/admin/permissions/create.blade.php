@@ -16,7 +16,9 @@
                         @include('admin.permissions._form')
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary mr-2">{{ __('Save') }}</button>
+                            @permission('permission.create')
+                                <button type="submit" class="btn btn-primary mr-2">{{ __('Save') }}</button>
+                            @endpermission
                             <a href="{{ route('admin.permissions.index') }}" class="btn btn-default"
                                 role="button">{{ __('Cancel') }}</a>
                         </div>
