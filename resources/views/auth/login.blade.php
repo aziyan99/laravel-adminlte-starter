@@ -36,5 +36,8 @@
                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </div>
         </div>
+        <p class="my-1">
+            <a href="{{ route('password.request') }}">I forgot my password</a>
+        </p>
     </form>
 @endsection
