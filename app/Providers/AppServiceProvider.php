@@ -2,34 +2,50 @@
 
 namespace App\Providers;
 
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        // use bootstrap pagination
-        Paginator::useBootstrap();
+        // Custom blade directive
+        Blade::if('permission', function (string $permissionName) {
 
+            // superadmin
+            if (auth()->user()->email == config('starter.super_admin_email')) {
+                return true;
+            }
 
-        config(['app.locale' => 'id']);
-        Carbon::setLocale('id');
+            // naive approach
+            $roles = auth()->user()->roles;
+            $permissions = [];
+            foreach ($roles as $role) {
+                foreach ($role->permissions as $permission) {
+                    $permissions[] = $permission->name;
+                }
+            }
+
+            $permissions = array_unique($permissions);
+
+            return in_array($permissionName, $permissions);
+        });
+
+        // Show only on dev
+        Blade::if('onlydev', function () {
+            $possibleEnvs = ['local', 'dev', 'development']; // TODO: Move to starter.php
+            return in_array(config('app.env'), $possibleEnvs);
+        });
     }
 }
