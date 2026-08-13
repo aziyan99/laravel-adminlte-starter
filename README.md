@@ -1,3 +1,5 @@
+
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -51,9 +53,9 @@ This is an example of how to list things you need to use the software and how to
 
 1. `npm run build` to build the assets
 2. `php artisan key:generate`
-4. `php artisan migrate:fresh`
-5. `php artisan db:seed`
-6. `php artisan serve` or another web server that able to run PHP based website
+3. `php artisan migrate:fresh`
+4. `php artisan db:seed`
+5. `php artisan serve` or another web server that able to run PHP based website
 
 ### Authentication
 - URL `http://<domain-local>/login` or configurated URL.
@@ -76,4 +78,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [license-shield]: https://img.shields.io/github/license/aziyan99/laravel-adminlte-starter.svg?style=for-the-badge
 [license-url]: https://github.com/aziyan99/laravel-adminlte-starter/blob/main/LICENCE.txt
 [product-screenshot]: https://i.ibb.co/q7KVQgT/screencapture-laravel-adminlte-starter-test-backend-settings-index-2022-03-18-12-45-47.png
-
